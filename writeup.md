@@ -49,18 +49,23 @@ You're reading it!
 
 The code for this step is contained in the 3rd code cell of the IPython notebook located in "./P4_AdvancedLaneLines.ipynb", with the comment block:
 
-`########################################################`
-`# 1. Compute the camera calibration matrix`
-`#    and distortion coefficients given a set of chessboard images.`
-`########################################################`
+```python
+########################################################
+# 1. Compute the camera calibration matrix
+#    and distortion coefficients given a set of chessboard images.
+########################################################
+```
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function, as in the beginning of 4th code cell, with the comment:
 
-`###############################################################` 
-`# 2. Apply a distortion correction to raw images.`
-`########################################################`
+
+```python
+###############################################################
+# 2. Apply a distortion correction to raw images.
+########################################################
+```
 
 and obtained this result: 
 ![02_Undistort_Camera_CalibImg][02_Undistort_Camera_CalibImg]
