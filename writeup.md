@@ -29,6 +29,10 @@ The goals / steps of this project are the following:
 [07_08_LaneOverlayOnImage_Straight]: ./output_images/07_08_LaneOverlayOnImage_Straight.png "07_08_LaneOverlayOnImage_Straight"
 [09_Final_Radius_Position_Overlay_Curved]: ./output_images/09_Final_Radius_Position_Overlay_Curved.png "09_Final_Radius_Position_Overlay_Curved"
 [09_Final_Radius_Position_Overlay_Straight]: ./output_images/09_Final_Radius_Position_Overlay_Straight.png  "09_Final_Radius_Position_Overlay_Straight"
+[07_08_LaneOverlayOnImage_Curved_2]: ./output_images/07_08_LaneOverlayOnImage_Curved_2.png "07_08_LaneOverlayOnImage_Curved_2"
+[07_08_LaneOverlayOnImage_Straight_2]: ./output_images/07_08_LaneOverlayOnImage_Straight_2.png "07_08_LaneOverlayOnImage_Straight_2"
+[09_Final_Radius_Position_Overlay_Curved_2]: ./output_images/09_Final_Radius_Position_Overlay_Curved_2.png "09_Final_Radius_Position_Overlay_Curved_2"
+[09_Final_Radius_Position_Overlay_Straight_2]: ./output_images/09_Final_Radius_Position_Overlay_Straight_2.png  "09_Final_Radius_Position_Overlay_Straight_2"
 [output_video]: ./project_video_output.mp4 "output_video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -176,6 +180,8 @@ Essentially, it starts by creating a distribution of white pixels in one horizon
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
+Note: This has been corrected with `xm_per_pix = 3.7/900`, because my lane width is ~900 pixels, and with lane-fill images.
+
 This is done in the 10th cell, in the section starting with:
 
 ```python
@@ -193,13 +199,15 @@ For obtaining the vehicle position, I find its difference from the center of the
 To get the center of the lanes, I just evaluate the polynomial fit at the lowest y point for each lane: left and right.
 
 Here are the examples of the values displayed for straight-lane and curved-lane test images
-![09_Final_Radius_Position_Overlay_Straight][09_Final_Radius_Position_Overlay_Straight]
-![09_Final_Radius_Position_Overlay_Curved][09_Final_Radius_Position_Overlay_Curved]
+![09_Final_Radius_Position_Overlay_Straight_2][09_Final_Radius_Position_Overlay_Straight_2]
+![09_Final_Radius_Position_Overlay_Curved_2][09_Final_Radius_Position_Overlay_Curved_2]
 
-For the staight-lane, my curvature is very high: 159km, which means the polynomial fitting has detected it as almost stright.
-My curvature here is ~700m, which is very close to the 1000m (1km) value given in the project outline, which tells me the lane-finding pipeline is good, but not great.
+For the staight-lane, my curvature is very high: 204km, which means the polynomial fitting has detected it as almost stright.
+My curvature here is ~900m, which is very close to the 1000m (1km) value given in the project outline, which tells me the lane-finding pipeline is good, but not great.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+
+Note: This section has been updated with the lane-fill images with the help of code in 'Tips and Tricks'.
 
 I actually did this step before finding the 'radius of curvature' and 'vehicle position', which is why the images in the previous section already contain the found-lanes already overlayed into the test images.
 
@@ -222,10 +230,10 @@ From top-left to bottom right:
 * Bottom-right: Original undistorted image overlayed with the mask created in 'Bottom-left' image
 
 Straight-lanes:
-![07_08_LaneOverlayOnImage_Straight][07_08_LaneOverlayOnImage_Straight]
+![07_08_LaneOverlayOnImage_Straight_2][07_08_LaneOverlayOnImage_Straight_2]
 
 Curved-lanes:
-![07_08_LaneOverlayOnImage_Curved][07_08_LaneOverlayOnImage_Curved]
+![07_08_LaneOverlayOnImage_Curved_2][07_08_LaneOverlayOnImage_Curved_2]
 
 ---
 
